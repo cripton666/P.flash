@@ -482,9 +482,10 @@ function ctrl_c(){
     echo -e "\n\n\e[1;31m[*]SALIENDO DEL SCRIPT\e[0m\n"
     exit 0
 }
-read -p "AQUI IP :" a 
+echo -n -e "\e[1;33mAQUI IP :\e[0m"
+read IP
 for port in $(seq 1 65530); do
-    tomeout 1 bash -c "echo '' < /dev/tcp/$a/$port" 2>/dev/null && echo "Port $port - OPEN" &
+    tomeout 1 bash -c "echo '' < /dev/tcp/$IP/$port" 2>/dev/null && echo "Port $port - OPEN" &
 done; wait     
 ;;
 9)
