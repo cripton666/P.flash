@@ -485,7 +485,7 @@ function ctrl_c(){
 echo -n -e "\e[1;33mAQUI IP :\e[0m"
 read IP
 for port in $(seq 1 65530); do
-    tomeout 1 bash -c "echo '' < /dev/tcp/$IP/$port" 2>/dev/null && echo "Port $port - OPEN" &
+    timeout 1 bash -c "echo '' < /dev/tcp/$IP/$port" 2>/dev/null && echo "Port $port - OPEN" &
 done; wait     
 ;;
 9)
